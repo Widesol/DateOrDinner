@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Vadblirdetförmat
 {
@@ -11,9 +13,9 @@ namespace Vadblirdetförmat
         static void Main(string[] args)
         {
             StartApp(); //Välkomsthälsning
-            ReadTextFile();
+           List<Meal> mealList=ReadTextFile();
             EnterFoodDate(); // Användaren matar in datum 
-            ShowDinnerPlaces(); // Användaren får alternativ på var maten
+            ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources();
             ShowCarbSources();
             ShowMenues();
@@ -27,17 +29,17 @@ namespace Vadblirdetförmat
             Console.WriteLine("Är du hungrig? Välkommen, här hittar du recept som passar dig!");
         }
 
-        private static void ReadTextFile()
+        private static List <Meal>  ReadTextFile()
         {
             List<Meal> mealList = new List<Meal>();
             string[] textFile = File.ReadAllLines("Recepies.txt");
             foreach (string item in textFile)
             {
-                string[] listOfMealEvent = item.Split(',');
+                string[] listOfMealEvent = item.Split('|');
 
                 var s = new Meal
                 {
-                    Time = DateTime.Parse(textFile[0]),
+                    Time = int.Parse(textFile[0]),
                     Place = textFile[1],
                     Protein = textFile[2],
                     Carbohydrates = textFile[3],
@@ -45,12 +47,12 @@ namespace Vadblirdetförmat
                     Receipe = textFile[5],
                     Instructions = textFile[6],
                     Difficulty = int.Parse(textFile[7]),
-                    Flavoring = int.Parse(textFile[8]),
+                    Flavoring = textFile[8],
                     Vegetables = textFile[9],
                 };
                 mealList.Add(s);
             }
-            return textFile;
+            return mealList;
         }
     
 
@@ -60,7 +62,7 @@ namespace Vadblirdetförmat
             Console.ReadLine();
         }
 
-        private static void ShowDinnerPlaces()
+        private static void ShowDinnerPlaces(List<Meal>mealList)
         {
             int lastChoice = Choices.Count;
             string dateMonth = Choices[lastChoice - 1].DinnerDate.Month.ToString();
@@ -73,28 +75,29 @@ namespace Vadblirdetförmat
             else if(int.Parse(dateDay) >= 25 && int.Parse(dateDay) <= 28)
             {
                 int timeSlot = 1;
-                ShowPlaces(timeSlot);
+                ShowPlaces(timeSlot, mealList);
             }
             else if (int.Parse(dateDay) >= 29 && int.Parse(dateDay) <= 31 || int.Parse(dateDay) >= 1 && int.Parse(dateDay) <= 10)
             {
                 int timeSlot = 2;
-                ShowPlaces(timeSlot);
+                ShowPlaces(timeSlot, mealList);
             }
             else if (int.Parse(dateDay) >= 11 && int.Parse(dateDay) <= 21)
             {
                 int timeSlot = 3;
-                ShowPlaces(timeSlot);
+                ShowPlaces(timeSlot, mealList);
             }
             else
             {
                 int timeSlot = 4;
-                ShowPlaces(timeSlot);
+                ShowPlaces(timeSlot, mealList);
             }
         }
 
-        private static void ShowPlaces(int timeSlot)
+        private static void ShowPlaces(int timeSlot, List<Meal> mealList)
         {
-            var showPlaces = ReadTextFil.Select(x => x.Place).Distinct();
+            var showPlaces = mealList.Where(x => x.Time==timeSlot).Select(x=>x.Place).Distinct().ToList();
+
             PrintChoices(showPlaces);
             EnterChoice();
             FriendOrFamily();
@@ -154,9 +157,27 @@ namespace Vadblirdetförmat
         {
             throw new NotImplementedException();
         }
-        private static void PrintChoices(object showPlaces)
+        private static void PrintChoices(List<string> showPlaces)
         {
-            throw new NotImplementedException();
+            int counter = 1;
+            string[] choiceList = new string[showPlaces.Count]; 
+            foreach (var place in showPlaces)
+            {
+
+                choiceList[counter - 1] = $"{counter} {place}";
+                Console.WriteLine(choiceList[counter-1]);
+               
+                counter++;
+            }
+            string placeChoice = Console.ReadLine();
+
+            foreach (var choice in choiceList)
+            {
+                string[] splitArray = choice.Split(" ");
+                if (placeChoice == splitArray[0])
+                    Choices[0].Place = (Places)Enum.Parse(typeof(Places),splitArray[1]);
+
+            }
         }
         private static void EndOfProgram()
         {
