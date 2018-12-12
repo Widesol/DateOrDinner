@@ -29,8 +29,30 @@ namespace Vadblirdetförmat
 
         private static void ReadTextFile()
         {
-            throw new NotImplementedException();
+            List<Meal> mealList = new List<Meal>();
+            string[] textFile = File.ReadAllLines("Recepies.txt");
+            foreach (string item in textFile)
+            {
+                string[] listOfMealEvent = item.Split(',');
+
+                var s = new Meal
+                {
+                    Time = DateTime.Parse(textFile[0]),
+                    Place = textFile[1],
+                    Protein = textFile[2],
+                    Carbohydrates = textFile[3],
+                    Menu = textFile[4],
+                    Receipe = textFile[5],
+                    Instructions = textFile[6],
+                    Difficulty = int.Parse(textFile[7]),
+                    Flavoring = int.Parse(textFile[8]),
+                    Vegetables = textFile[9],
+                };
+                mealList.Add(s);
+            }
+            return textFile;
         }
+    }
 
         private static void EnterFoodDate()
         {
