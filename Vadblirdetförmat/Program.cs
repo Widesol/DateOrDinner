@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Vadblirdetförmat
 {
-    List<Choice> Choices = new List<Choice>();
-    class Program
+    class Program : Choice
     {
+        static List<Choice> Choices = new List<Choice>();
+
         static void Main(string[] args)
         {
             StartApp(); //Välkomsthälsning
@@ -19,7 +21,7 @@ namespace Vadblirdetförmat
             EndOfProgram();
 
         }
-      
+
         private static void StartApp()
         {
             Console.WriteLine("Är du hungrig? Välkommen, här hittar du recept som passar dig!");
@@ -30,10 +32,42 @@ namespace Vadblirdetförmat
             throw new NotImplementedException();
         }
 
-        private static void EnterFoodDate()
+        public static void EnterFoodDate()
         {
+            var dateFormat = "dd-MM-yyyy";
             Console.WriteLine("Vänligen skriv in dagens datum: ");
-            Console.ReadLine();
+            string x = Console.ReadLine();
+
+            DateTime validatedDate = ValidateNumber(x);
+            Choices.Add(new Choice() { DinnerDate = validatedDate });
+
+        }
+
+        private static DateTime ValidateNumber(string x)
+        {
+            while (true)
+            {
+                Match match = Regex.Match(x, @"^[0-9]\d[-][0-9]\d[-][0-9]\d$");
+
+                if (match.Success)
+                {
+                    DateTime date = DateTime.Parse(x);
+                    return date;
+                }
+                else
+                {
+                    Console.WriteLine("Datumet är i fel format, skriv in igen: ");
+                    x = Console.ReadLine();
+                    continue;
+                }
+            }
+
+            //DateTime dt;
+
+            //bool isValid = DateTime.TryParseExact(
+            //    "dd-MM-yyyy",
+            //    out dt);
+
         }
 
         private static void ShowDinnerPlaces()
@@ -42,7 +76,7 @@ namespace Vadblirdetförmat
             {
                 GetHolidayDinner();
             }
-            else if(false)
+            else if (false)
             {
                 ShowPlaces();
             }
@@ -91,10 +125,10 @@ namespace Vadblirdetförmat
 
         private static void EnterChoice()
         {
-            if(3)
+            if (3)
 
-            
-            throw new NotImplementedException();
+
+                throw new NotImplementedException();
         }
 
         private static void ShowCarbSources()
