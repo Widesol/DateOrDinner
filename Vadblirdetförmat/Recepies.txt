@@ -1,1 +1,3 @@
-Time,Place,Protien,Carbohydrates,Menu,Recepie,Difficulty,Flavoring,Vegetables
+Time|Place|Protien|Carbohydrates|Menu|Recepie|instructions|Difficulty|Flavoring|Vegetables
+1|Hemma|Kött|Potatis|Hjortfilé|900 g hjortfilé, smör till stekning, 2 tsk Salt, 0.5 tsk nymald svartpeppar| Sätt ugnen på 150º. Putsa köttet och bryn runtom i smör. Salta och peppra under tiden. Lägg över det i en ugnsform eller på plåt. Hit kan förberedas.Stek köttet mitt i ugnen tills innertemperaturen är 58º, då är köttet rosarött. Ta ut och låt det vila under folie 10 minuter innan du skivar upp det.|2|Medium|Sallad
+
