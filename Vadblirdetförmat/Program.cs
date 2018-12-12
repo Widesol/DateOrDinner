@@ -21,7 +21,7 @@ namespace Vadblirdetförmat
       
         private static void StartApp()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Är du hungrig? Välkommen, här hittar du recept som passar dig!");
         }
 
         private static void ReadTextFile()
@@ -31,7 +31,7 @@ namespace Vadblirdetförmat
 
         private static void EnterFoodDate()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Vänligen skriv in dagens datum: ");
         }
 
         private static void ShowDinnerPlaces()
@@ -63,9 +63,13 @@ namespace Vadblirdetförmat
             //var showPlaces = ReadTextFil.Select(x => x.Place).Distinct();
             PrintChoices(showPlaces);
             EnterChoice();
+            FriendOrFamily();
         }
 
-
+        private static void FriendOrFamily()
+        {
+            throw new NotImplementedException();
+        }
 
         private static void GetHolidayDinner()
         {
