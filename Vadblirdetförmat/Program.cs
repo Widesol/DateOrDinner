@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace Vadblirdetförmat
 {
-    List<Choice> Choices = new List<Choice>();
+
     class Program
     {
+        static List<Choice> Choices = new List<Choice>();
+
         static void Main(string[] args)
         {
             StartApp(); //Välkomsthälsning
@@ -38,31 +40,39 @@ namespace Vadblirdetförmat
 
         private static void ShowDinnerPlaces()
         {
-            if (false)
+            int lastChoice = Choices.Count;
+            string dateMonth = Choices[lastChoice - 1].DinnerDate.Month.ToString();
+            string dateDay = Choices[lastChoice - 1].DinnerDate.Day.ToString();
+
+            if ((dateMonth == "12" && dateDay == "24") || (dateMonth == "3" && dateDay == "24") || (dateMonth == "6" && dateDay == "21"))
             {
-                GetHolidayDinner();
+                GetHolidayDinner(dateMonth);
             }
-            else if(false)
+            else if(int.Parse(dateDay) >= 25 && int.Parse(dateDay) <= 28)
             {
-                ShowPlaces();
+                int timeSlot = 1;
+                ShowPlaces(timeSlot);
             }
-            else if (false)
+            else if (int.Parse(dateDay) >= 29 && int.Parse(dateDay) <= 31 || int.Parse(dateDay) >= 1 && int.Parse(dateDay) <= 10)
             {
-                ShowPlaces();
+                int timeSlot = 2;
+                ShowPlaces(timeSlot);
             }
-            else if (false)
+            else if (int.Parse(dateDay) >= 11 && int.Parse(dateDay) <= 21)
             {
-                ShowPlaces();
+                int timeSlot = 3;
+                ShowPlaces(timeSlot);
             }
             else
             {
-                ShowPlaces();
+                int timeSlot = 4;
+                ShowPlaces(timeSlot);
             }
         }
 
-        private static void ShowPlaces()
+        private static void ShowPlaces(int timeSlot)
         {
-            //var showPlaces = ReadTextFil.Select(x => x.Place).Distinct();
+            var showPlaces = ReadTextFil.Select(x => x.Place).Distinct();
             PrintChoices(showPlaces);
             EnterChoice();
             FriendOrFamily();
@@ -73,14 +83,26 @@ namespace Vadblirdetförmat
             throw new NotImplementedException();
         }
 
-        private static void GetHolidayDinner()
+        private static void GetHolidayDinner(string dateMonth)
         {
-            if (true)
-            {
-                ShowPlaces();
-                //Om det är Jul, Påsk eller Midsommar.
+            string holidaydinner = "";
 
+            switch (dateMonth)
+            {
+                case "12":
+                    holidaydinner = "Julmiddag";
+                    break;
+                case "3":
+                    holidaydinner = "Påskmiddag";
+                    break;
+                case "6":
+                    holidaydinner = "Midsommarmat";
+                    break;
             }
+
+            Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
+            Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
+            ShowPlaces();
         }
 
         private static void ShowProteinSources()
