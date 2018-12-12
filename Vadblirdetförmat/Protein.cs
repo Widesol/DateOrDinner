@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Vadblirdetförmat
 {
-    class Protein
+    enum Protein
     {
+        Nötkött,
+        Fläskkött,
+        Fisk,
+        Tofu,
     }
 }

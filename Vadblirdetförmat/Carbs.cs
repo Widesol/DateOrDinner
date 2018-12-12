@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Vadblirdetförmat
 {
-    class Carbs
+    enum Carbs
     {
+        Ris,
+        Pasta,
+        Potatis,
+        Rotfrukter,
+        Bulgur,
     }
 }

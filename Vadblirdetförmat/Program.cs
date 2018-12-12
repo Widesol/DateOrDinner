@@ -63,9 +63,13 @@ namespace Vadblirdetförmat
             //var showPlaces = ReadTextFil.Select(x => x.Place).Distinct();
             PrintChoices(showPlaces);
             EnterChoice();
+            FriendOrFamily();
         }
 
-
+        private static void FriendOrFamily()
+        {
+            throw new NotImplementedException();
+        }
 
         private static void GetHolidayDinner()
         {

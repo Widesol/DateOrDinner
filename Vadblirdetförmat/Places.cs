@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Vadblirdetförmat
 {
-    class Places
+    enum Places
     {
+        Hemma,
+        Restaurang,
+        Vän,
+        Föräldrar,
+        Frälsningsarmén,
+        BlindDate,
     }
 }
