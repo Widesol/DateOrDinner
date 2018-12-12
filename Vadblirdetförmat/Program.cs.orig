@@ -4,8 +4,12 @@ using System.Text.RegularExpressions;
 
 namespace Vadblirdetförmat
 {
+<<<<<<< HEAD
+    class Program : Choice
+=======
 
     class Program
+>>>>>>> eaceb5083b759ca23ab26d793e2dee2cd588fa47
     {
         static List<Choice> Choices = new List<Choice>();
 
@@ -53,6 +57,7 @@ namespace Vadblirdetförmat
             }
             return textFile;
         }
+    
 
         public static void EnterFoodDate()
         {
@@ -102,7 +107,11 @@ namespace Vadblirdetförmat
             {
                 GetHolidayDinner(dateMonth);
             }
+<<<<<<< HEAD
+            else if (false)
+=======
             else if(int.Parse(dateDay) >= 25 && int.Parse(dateDay) <= 28)
+>>>>>>> eaceb5083b759ca23ab26d793e2dee2cd588fa47
             {
                 int timeSlot = 1;
                 ShowPlaces(timeSlot);
