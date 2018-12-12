@@ -52,7 +52,7 @@ namespace Vadblirdetförmat
             }
             return textFile;
         }
-    }
+    
 
         private static void EnterFoodDate()
         {
