@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Vadblirdetförmat
 {
+    List<Choice> Choices = new List<Choice>();
     class Program
     {
         static void Main(string[] args)
@@ -17,7 +19,6 @@ namespace Vadblirdetförmat
             EndOfProgram();
 
         }
-
       
         private static void StartApp()
         {
@@ -32,6 +33,7 @@ namespace Vadblirdetförmat
         private static void EnterFoodDate()
         {
             Console.WriteLine("Vänligen skriv in dagens datum: ");
+            Console.ReadLine();
         }
 
         private static void ShowDinnerPlaces()
