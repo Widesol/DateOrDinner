@@ -32,7 +32,7 @@ namespace Vadblirdetförmat
         private static List <Meal>  ReadTextFile()
         {
             List<Meal> mealList = new List<Meal>();
-            string[] textFile = File.ReadAllLines(@"C:\Users\Administrator\Desktop\Temp\DateOrDinner\Vadblirdetförmat\Recepies.txt");
+            string[] textFile = File.ReadAllLines(@"Recepies.txt");
             foreach (string item in textFile)
             {
                 string[] listOfMealEvent = item.Split('|');
