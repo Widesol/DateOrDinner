@@ -6,9 +6,8 @@ namespace Vadblirdetförmat
 {
     enum Protein
     {
-        Nötkött,
-        Fläskkött,
+        Kött,
         Fisk,
-        Tofu,
+        Vegetariskt,
     }
 }

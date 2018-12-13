@@ -8,9 +8,11 @@ namespace Vadblirdetförmat
     {
         Hemlagat,
         Restaurang,
-        Vän,
+        Närstående,
         Föräldrar,
         Arbetet,
         BlindDate,
+        Hämtmat,
+
     }
 }

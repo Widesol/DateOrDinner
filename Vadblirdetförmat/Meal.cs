@@ -14,7 +14,7 @@ namespace Vadblirdetförmat
         public string Menu { get; set; }
         public string Receipe { get; set; }
         public string Instructions { get; set; }
-        public int Difficulty { get; set; }
+        public string Difficulty { get; set; }
         public string Flavoring { get; set; }
         public string Vegetables { get; set; }
     }

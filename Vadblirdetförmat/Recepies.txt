@@ -40,13 +40,13 @@
 4|Ute|Restaurang|Vegetariskt|Vegetarisk korv från Ikeas kiosk 5kr| | | | | 
 4|UteRestaurang||Vegetariskt|Skogen - Barr, kottar och löv! Endast fantasin sätter gränser här!| | | | | 
 4|Ute|Närstående|Kött|Bjud in dig till valfri vän, du äter vad som bjuds...| | | | | 
-5|Hemma|Hemlagat|Kött|Julbord|Inlagd sill, sillsallad, gravad lax, lutfisk, julskinka, olika korvar, sylta, rödbetssallad, Janssons frestelse, köttbullar, risgrynsgröt, revbensspjäll, potatis, olika kålsorter och vörtbröd|5|Mild| 
-5|Hemma|Hemlagat|Fisk/skaldjur|Julbord|Inlagd sill, sillsallad, gravad lax, lutfisk, julskinka, olika korvar, sylta, rödbetssallad, Janssons frestelse, köttbullar, risgrynsgröt, revbensspjäll, potatis, olika kålsorter och vörtbröd|5|Mild| 
-5|Hemma|Hemlagat|Vegetariskt|Julbord|Inlagd palsternacka, senaps-"sill" på aubergine, rödbetssallad, ugnsgriljerad rotselleri, vegetarisk Janssons frestelse, saffranskokt palsernacka, vegobullar, grönkålspaj med västerbottenost|5|Mild| 
-5|Hemma|Hemlagat|Kött|Påskbuffé|Inlagd sill, sillsallad, gravad lax, rökt lax, olika korvar, rödbetssallad, Janssons frestelse, köttbullar, lamm, revbensspjäll, potatis, ägghalvor|5|Mild|
-5|Hemma|Hemlagat|Fisk/skaldjur|Påskbuffé|Inlagd sill, sillsallad, gravad lax, rökt lax, olika korvar, rödbetssallad, Janssons frestelse, köttbullar, lamm, revbensspjäll, potatis, ägghalvor| |5|Mild|
-5|Hemma|Hemlagat|Vegetariskt|Påskbuffé|Inlagd palsternacka, senaps-"sill" på aubergine, rödbetssallad, vegetarisk Janssons frestelse, vegobullar, grönkålspaj med västerbottenost| |5|Mild|
-5|Hemma|Hemlagat|Kött|Midsommarbuffé|Inlagd sill, gräddfil och gräslök, gravad lax, rökt lax, gravlaxssås, gubbröra, räkor, köttbullar, prinskorv, färskpotatis, jordgubbar| |5|Mild|
-5|Hemma|Hemlagat|Fisk/skaldjur|Midsommarbuffé|Inlagd sill, gräddfil och gräslök, gravad lax, rökt lax, gravlaxssås, gubbröra, räkor, köttbullar, prinskorv, färskpotatis, jordgubbar| |5|Mild| 
-5|Hemma|Hemlagat|Vegetariskt|Midsommarbuffé
+5|Hemma|Hemlagat|Kött|Julbord|Inlagd sill, sillsallad, gravad lax, lutfisk, julskinka, olika korvar, sylta, rödbetssallad, Janssons frestelse, köttbullar, risgrynsgröt, revbensspjäll, potatis, olika kålsorter och vörtbröd|5|Mild| | |  
+5|Hemma|Hemlagat|Fisk/skaldjur|Julbord|Inlagd sill, sillsallad, gravad lax, lutfisk, julskinka, olika korvar, sylta, rödbetssallad, Janssons frestelse, köttbullar, risgrynsgröt, revbensspjäll, potatis, olika kålsorter och vörtbröd|5|Mild| | |
+5|Hemma|Hemlagat|Vegetariskt|Julbord|Inlagd palsternacka, senaps-"sill" på aubergine, rödbetssallad, ugnsgriljerad rotselleri, vegetarisk Janssons frestelse, saffranskokt palsernacka, vegobullar, grönkålspaj med västerbottenost|5|Mild| | |
+5|Hemma|Hemlagat|Kött|Påskbuffé|Inlagd sill, sillsallad, gravad lax, rökt lax, olika korvar, rödbetssallad, Janssons frestelse, köttbullar, lamm, revbensspjäll, potatis, ägghalvor|5|Mild| | | 
+5|Hemma|Hemlagat|Fisk/skaldjur|Påskbuffé|Inlagd sill, sillsallad, gravad lax, rökt lax, olika korvar, rödbetssallad, Janssons frestelse, köttbullar, lamm, revbensspjäll, potatis, ägghalvor| |5|Mild| | |
+5|Hemma|Hemlagat|Vegetariskt|Påskbuffé|Inlagd palsternacka, senaps-"sill" på aubergine, rödbetssallad, vegetarisk Janssons frestelse, vegobullar, grönkålspaj med västerbottenost| |5|Mild| | |
+5|Hemma|Hemlagat|Kött|Midsommarbuffé|Inlagd sill, gräddfil och gräslök, gravad lax, rökt lax, gravlaxssås, gubbröra, räkor, köttbullar, prinskorv, färskpotatis, jordgubbar| |5|Mild| | |
+5|Hemma|Hemlagat|Fisk/skaldjur|Midsommarbuffé|Inlagd sill, gräddfil och gräslök, gravad lax, rökt lax, gravlaxssås, gubbröra, räkor, köttbullar, prinskorv, färskpotatis, jordgubbar| |5|Mild| | | 
+5|Hemma|Hemlagat|Vegetariskt|Midsommarbuffé| | | | | | 
 
