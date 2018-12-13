@@ -173,7 +173,7 @@ namespace Vadblirdetförmat
             string[] menueArray = new string[countMenues + 1];
             for (int i = 0; i < countMenues; i++)
             {
-                menueArray[i]=($"{i} {showMenues[i]}");
+                menueArray[i]=($"{i + 1} {showMenues[i]}");
                 Console.WriteLine(menueArray[i]);
 
             }
