@@ -192,6 +192,8 @@ namespace Vadblirdetförmat
 
         }
 
+    
+
         private static void ShowRecepies(List<Meal> mealList)
         {
             var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => new { x.Receipe, x.Instructions }).ToArray();
@@ -251,7 +253,7 @@ namespace Vadblirdetförmat
 
         }
 
-        private static void EnterChoice(string placeChoice, string[] choiceList, int numberChoice) 
+        private static void EnterChoice(string placeChoice, string[] choiceList) 
         {
             foreach (var choice in choiceList)
             {
@@ -263,11 +265,19 @@ namespace Vadblirdetförmat
                 else if(placeChoice == splitArray[0] && numberChoice == 3)
                     Choices.Last().Menues = splitArray[1];
 
+            }
+        }
+        private static void EnterMenueSplitChoice(string[] menueArray)
+        {
+            foreach (var choice in menueArray)
+            {
+                string[] splitArray = choice.Split(".");
 
+                if (placeChoice == splitArray[0])
+                    Choices.Last().Place = splitArray[1]);
 
             }
         }
-
         private static void EndOfProgram()
         {
             throw new NotImplementedException();
