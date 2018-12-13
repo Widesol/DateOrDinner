@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Vadblirdetförmat
 {
@@ -13,7 +14,7 @@ namespace Vadblirdetförmat
         static void Main(string[] args)
         {
             StartApp(); //Välkomsthälsning
-           List<Meal> mealList=ReadTextFile();
+            List<Meal> mealList=ReadTextFile();
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources();
@@ -32,25 +33,28 @@ namespace Vadblirdetförmat
         private static List <Meal>  ReadTextFile()
         {
             List<Meal> mealList = new List<Meal>();
-            string[] textFile = File.ReadAllLines("Recepies.txt");
+            string[] textFile = File.ReadAllLines(@"C:\Users\Administrator\Desktop\Temp\DateOrDinner\Vadblirdetförmat\Recepies.txt");
             foreach (string item in textFile)
             {
                 string[] listOfMealEvent = item.Split('|');
 
-                var s = new Meal
+                if (int.TryParse(listOfMealEvent[0], out int result))
                 {
-                    Time = int.Parse(textFile[0]),
-                    Place = textFile[1],
-                    Protein = textFile[2],
-                    Carbohydrates = textFile[3],
-                    Menu = textFile[4],
-                    Receipe = textFile[5],
-                    Instructions = textFile[6],
-                    Difficulty = int.Parse(textFile[7]),
-                    Flavoring = textFile[8],
-                    Vegetables = textFile[9],
-                };
-                mealList.Add(s);
+                    var s = new Meal
+                    {
+                        Time = result,
+                        Place = listOfMealEvent[1],
+                        Protein = listOfMealEvent[2],
+                        Carbohydrates = listOfMealEvent[3],
+                        Menu = listOfMealEvent[4],
+                        Receipe = listOfMealEvent[5],
+                        Instructions = listOfMealEvent[6],
+                        Difficulty = int.Parse(listOfMealEvent[7]),
+                        Flavoring = listOfMealEvent[8],
+                        Vegetables = listOfMealEvent[9],
+                    };
+                    mealList.Add(s);
+                }
             }
             return mealList;
         }
@@ -60,6 +64,33 @@ namespace Vadblirdetförmat
         {
             Console.WriteLine("Vänligen skriv in dagens datum: ");
             Console.ReadLine();
+
+            string x = Console.ReadLine();
+
+            DateTime validatedDate = ValidateNumber(x);
+            Choices.Add(new Choice() { DinnerDate = validatedDate });
+
+        }
+
+        private static DateTime ValidateNumber(string x)
+        {
+            while (true)
+            {
+                Match match = Regex.Match(x, @"^[0-9]\d[-][0-9]\d[-][0-9]\d$");
+
+                if (match.Success)
+                {
+                    DateTime date = DateTime.Parse(x);
+                    return date;
+                }
+                else
+                {
+                    Console.WriteLine("Datumet är i fel format, skriv in igen: ");
+                    x = Console.ReadLine();
+                    continue;
+                }
+            }
+
         }
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
@@ -127,7 +158,7 @@ namespace Vadblirdetförmat
 
             Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
             Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
-            ShowPlaces();
+            //ShowPlaces();
         }
 
         private static void ShowProteinSources()
@@ -138,7 +169,7 @@ namespace Vadblirdetförmat
 
         private static void EnterChoice()
         {
-            if(3)
+            
 
             
             throw new NotImplementedException();
@@ -151,7 +182,7 @@ namespace Vadblirdetförmat
         }
         private static void ShowMenues()
         {
-            CreateNewMenue();
+            //CreateNewMenue();
         }
         private static void ShowRecepies()
         {
