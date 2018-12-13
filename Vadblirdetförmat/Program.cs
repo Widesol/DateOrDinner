@@ -184,6 +184,7 @@ namespace Vadblirdetförmat
 
             Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
 
+
             string placeChoice = Console.ReadLine();
             return (placeChoice, menueArray, 3);
 
@@ -194,13 +195,12 @@ namespace Vadblirdetförmat
 
         private static void ShowRecepies(List<Meal> mealList)
         {
-            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => new { x.Receipe, x.Instructions }).ToArray();
-
+           var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
             Console.WriteLine("Recept: ");
-            Console.WriteLine($"{recepie[0]}");
+            Console.WriteLine($"{recepie[0].Receipe}");
             Console.WriteLine();
             Console.WriteLine("Tilllagning: ");
-            Console.WriteLine($"{recepie[1]}");
+            Console.WriteLine($"{recepie[0].Instructions}");
             Console.WriteLine("Smaklig måltid!");
         }
 
@@ -270,7 +270,7 @@ namespace Vadblirdetförmat
 
         private static void EndOfProgram()
         {
-            throw new NotImplementedException();
+            
         }
 
     }
