@@ -126,8 +126,9 @@ namespace Vadblirdetförmat
 
         private static void ShowPlaces(List<Meal> mealList)
         {
-            var showPlacesHome = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Hemma.ToString()).Select(x=>x.Servis).Distinct().ToList();
-            var showPlacesAway = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Ute.ToString()).Select(x =>x.Servis).Distinct().ToList();
+            int numberOfChoice = Choices.Count;
+            var showPlacesHome = mealList.Where(x => x.Time == Choices[numberOfChoice - 1].TimeSlot && x.Place == Places.Hemma.ToString()).Select(x=>x.Servis).Distinct().ToList();
+            var showPlacesAway = mealList.Where(x => x.Time == Choices[numberOfChoice - 1].TimeSlot && x.Place == Places.Ute.ToString()).Select(x =>x.Servis).Distinct().ToList();
             var enteredChoice = PrintChoices(showPlacesHome, showPlacesAway);
             EnterChoice(enteredChoice.Item1, enteredChoice.Item2);
         }
