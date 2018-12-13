@@ -45,7 +45,6 @@ namespace Vadblirdetförmat
                         Servis = listOfMealEvent[1],
                         Place = listOfMealEvent[2],
                         Protein = listOfMealEvent[3],
-                        Carbohydrates = listOfMealEvent[4],
                         Menu = listOfMealEvent[5],
                         Receipe = listOfMealEvent[6],
                         Instructions = listOfMealEvent[7],
@@ -166,7 +165,7 @@ namespace Vadblirdetförmat
 
         private static void ShowMenues(List<Meal> mealList)
         {
-            var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource()).Select(x => x.Protein).Distinct().ToList();
+            var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein == Choices.Last().Proteinsource.ToString()).Select(x => x.Protein).Distinct().ToList();
         }
 
         private static void ShowRecepies(List<Meal> mealList)
