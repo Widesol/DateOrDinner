@@ -18,7 +18,7 @@ namespace Vadblirdetförmat
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources(mealList);
-           (int placeChoice, string[] menueArray)= ShowMenues(mealList);
+           (string placeChoice, string[] menueArray)= ShowMenues(mealList);
             ShowRecepies(mealList);
             EndOfProgram();
 
@@ -183,7 +183,7 @@ namespace Vadblirdetförmat
 
             Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
 
-            int placeChoice = int.Parse(Console.ReadLine());
+            string placeChoice = Console.ReadLine();
             return (placeChoice, menueArray);
 
 
