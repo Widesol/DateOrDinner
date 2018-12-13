@@ -18,7 +18,7 @@ namespace Vadblirdetförmat
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources(mealList);
-            ShowMenues(mealList);
+           (int placeChoice, string[] menueArray)= ShowMenues(mealList);
             ShowRecepies(mealList);
             EndOfProgram();
 
@@ -32,7 +32,7 @@ namespace Vadblirdetförmat
         private static List <Meal>  ReadTextFile()
         {
             List<Meal> mealList = new List<Meal>();
-            string[] textFile = File.ReadAllLines(@"C:\Users\Administrator\Desktop\Temp\DateOrDinner\Vadblirdetförmat\Recepies.txt");
+            string[] textFile = File.ReadAllLines(@"Recepies.txt");
             foreach (string item in textFile)
             {
                 string[] listOfMealEvent = item.Split('|');
@@ -164,14 +164,29 @@ namespace Vadblirdetförmat
             EnterChoice(placeChoice, choiceList); 
         }
 
-        private static void ShowMenues(List<Meal> mealList)
+        private static (string placeChoice, string[] menueArray) ShowMenues(List<Meal> mealList)
         {
             var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
-
+            int counter;
+            
+            
+           
+            string[] menueArray = new string[4];
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine(showMenues[i]);
+                menueArray[i]=($"{i}. {showMenues[i]}");
+                Console.WriteLine(menueArray[i]);
+
             }
+            menueArray[4] = "4. Nytt menyförslag";
+                Console.WriteLine($"4. Nytt menyförslag");
+
+
+            Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
+
+            int placeChoice = int.Parse(Console.ReadLine());
+            return (placeChoice, menueArray);
+
 
 
 

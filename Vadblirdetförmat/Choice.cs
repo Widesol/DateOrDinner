@@ -11,6 +11,6 @@ namespace Vadblirdetförmat
         public Places Place { get; set; }
         public Serv Servis { get; set; }
         public Protein Proteinsource { get; set; }
-        public Carbs Carbohydrates { get; set; }
+        public string Menues { get; set; }
     }
 }
