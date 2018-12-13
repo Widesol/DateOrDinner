@@ -7,10 +7,6 @@ namespace Vadblirdetförmat
     enum Places
     {
         Hemma,
-        Restaurang,
-        Vän,
-        Föräldrar,
-        Frälsningsarmén,
-        BlindDate,
+        Ute,
     }
 }
