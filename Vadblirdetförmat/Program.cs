@@ -17,9 +17,9 @@ namespace Vadblirdetförmat
             List<Meal> mealList=ReadTextFile();
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
-            ShowProteinSources();
+            ShowProteinSources(mealList);
             ShowCarbSources();
-            ShowMenues();
+            ShowMenues(mealList);
             ShowRecepies();
             EndOfProgram();
 
@@ -43,15 +43,16 @@ namespace Vadblirdetförmat
                     var s = new Meal
                     {
                         Time = result,
-                        Place = listOfMealEvent[1],
-                        Protein = listOfMealEvent[2],
-                        Carbohydrates = listOfMealEvent[3],
-                        Menu = listOfMealEvent[4],
-                        Receipe = listOfMealEvent[5],
-                        Instructions = listOfMealEvent[6],
-                        Difficulty = int.Parse(listOfMealEvent[7]),
-                        Flavoring = listOfMealEvent[8],
-                        Vegetables = listOfMealEvent[9],
+                        Servis = listOfMealEvent[1],
+                        Place = listOfMealEvent[2],
+                        Protein = listOfMealEvent[3],
+                        Carbohydrates = listOfMealEvent[4],
+                        Menu = listOfMealEvent[5],
+                        Receipe = listOfMealEvent[6],
+                        Instructions = listOfMealEvent[7],
+                        Difficulty = int.Parse(listOfMealEvent[8]),
+                        Flavoring = listOfMealEvent[9],
+                        Vegetables = listOfMealEvent[10],
                     };
                     mealList.Add(s);
                 }
@@ -62,8 +63,7 @@ namespace Vadblirdetförmat
 
         private static void EnterFoodDate()
         {
-            Console.WriteLine("Vänligen skriv in dagens datum: ");
-            Console.ReadLine();
+            Console.WriteLine("Vänligen skriv in dagens datum (ÅÅ-MM-DD): ");
 
             string x = Console.ReadLine();
 
@@ -95,43 +95,43 @@ namespace Vadblirdetförmat
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
         {
+            int timeSlot; //OW
             int lastChoice = Choices.Count;
             string dateMonth = Choices[lastChoice - 1].DinnerDate.Month.ToString();
             string dateDay = Choices[lastChoice - 1].DinnerDate.Day.ToString();
 
             if ((dateMonth == "12" && dateDay == "24") || (dateMonth == "3" && dateDay == "24") || (dateMonth == "6" && dateDay == "21"))
             {
-                GetHolidayDinner(dateMonth);
+                GetHolidayDinner(dateMonth, mealList);
             }
             else if(int.Parse(dateDay) >= 25 && int.Parse(dateDay) <= 28)
             {
-                int timeSlot = 1;
-                ShowPlaces(timeSlot, mealList);
+                Choices.Last().TimeSlot = 1;
+                ShowPlaces(mealList);
             }
             else if (int.Parse(dateDay) >= 29 && int.Parse(dateDay) <= 31 || int.Parse(dateDay) >= 1 && int.Parse(dateDay) <= 10)
             {
-                int timeSlot = 2;
-                ShowPlaces(timeSlot, mealList);
+                Choices.Last().TimeSlot = 2;
+                ShowPlaces(mealList);
             }
             else if (int.Parse(dateDay) >= 11 && int.Parse(dateDay) <= 21)
             {
-                int timeSlot = 3;
-                ShowPlaces(timeSlot, mealList);
+                Choices.Last().TimeSlot = 3;
+                ShowPlaces(mealList);
             }
             else
             {
-                int timeSlot = 4;
-                ShowPlaces(timeSlot, mealList);
+                Choices.Last().TimeSlot = 4;
+                ShowPlaces(mealList);
             }
+           
         }
 
-        private static void ShowPlaces(int timeSlot, List<Meal> mealList)
+        private static void ShowPlaces(List<Meal> mealList)
         {
-            var showPlaces = mealList.Where(x => x.Time==timeSlot).Select(x=>x.Place).Distinct().ToList();
-
-            PrintChoices(showPlaces);
-            EnterChoice();
-            FriendOrFamily();
+            var showPlacesHome = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Hemma.ToString()).Select(x=>x.Servis).Distinct().ToList();
+            var showPlacesAway = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Ute.ToString()).Select(x =>x.Servis).Distinct().ToList();
+            PrintChoices(showPlacesHome, showPlacesAway);
         }
 
         private static void FriendOrFamily()
@@ -139,7 +139,7 @@ namespace Vadblirdetförmat
             throw new NotImplementedException();
         }
 
-        private static void GetHolidayDinner(string dateMonth)
+        private static void GetHolidayDinner(string dateMonth, List<Meal> mealList)
         {
             string holidaydinner = "";
 
@@ -158,48 +158,54 @@ namespace Vadblirdetförmat
 
             Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
             Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
-            //ShowPlaces();
+            var showPlaces = mealList.Where(x => x.Menu == "Julbord" || x.Menu == "Påskbord" || x.Menu == "Midsommarmiddag").Select(x => x.Place).Distinct().ToList();
+            PrintChoices(showPlaces);
         }
 
-        private static void ShowProteinSources()
+        private static string ShowProteinSources(List<Meal> mealList)
         {
-            EnterChoice();
+            var showProtein = mealList.Where(x => x.Time == timeSlot && x.Place == Choices[0].Place.ToString()).Select(x => x.Protein).Distinct().ToList();
+           (string placeChoice, string[] choiceList)=PrintChoices(showProtein);
+            EnterChoice(placeChoice, choiceList);
             throw new NotImplementedException();
         }
 
-        private static void EnterChoice()
-        {
-            
 
-            
-            throw new NotImplementedException();
-        }
 
         private static void ShowCarbSources()
         {
-            EnterChoice();
+            //EnterChoice();
             throw new NotImplementedException();
         }
-        private static void ShowMenues()
+        private static void ShowMenues(List<Meal> mealList)
         {
-            //CreateNewMenue();
+            
         }
         private static void ShowRecepies()
         {
             throw new NotImplementedException();
         }
-        private static void PrintChoices(List<string> showPlaces)
+
+        private static (string, string[]) PrintChoices(List<string> showPlaces)
         {
             int counter = 1;
-            string[] choiceList = new string[showPlaces.Count]; 
-            foreach (var place in showPlaces)
+            string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
+            Console.WriteLine("Hemma");
+            foreach (var place in showPlacesHome)
             {
-
-                choiceList[counter - 1] = $"{counter} {place}";
-                Console.WriteLine(choiceList[counter-1]);
-               
+                choiceList[counter - 1] = $" {counter}. {place}";
+                Console.Write(choiceList[counter - 1]);
                 counter++;
             }
+
+            Console.WriteLine("Ute");
+            foreach (var place in showPlacesAway)
+            {
+                choiceList[counter - 1] = $" {counter}. {place}";
+                Console.Write(choiceList[counter - 1]);
+                counter++;
+            }
+            Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
 
             foreach (var choice in choiceList)
@@ -210,6 +216,39 @@ namespace Vadblirdetförmat
 
             }
         }
+        private static void PrintChoices(List<string> showPlacesHome)
+        {
+            int counter = 1;
+            string[] choiceList = new string[showPlacesHome.Count];
+            
+            foreach (var place in showPlacesHome)
+            {
+                choiceList[counter - 1] = $" {counter}. {place}";
+                Console.Write(choiceList[counter - 1]);
+                counter++;
+                //gör en array lika lång som listan vi skiskat in och tilldelar alternativen en plats i arrayen
+
+            }
+
+            
+            Console.Write("Gör ditt val från listorna: ");
+            string placeChoice = Console.ReadLine();
+            return (placeChoice, choiceList);
+
+
+        }
+
+        private static void EnterChoice(string placeChoice, string[] choiceList) 
+        {
+            foreach (var choice in choiceList)
+            {
+                string[] splitArray = choice.Split(" ");
+                if (placeChoice == splitArray[0])
+                    Choices.Last().Place = (Places)Enum.Parse(typeof(Places), splitArray[1]);
+
+            }
+        }
+
         private static void EndOfProgram()
         {
             throw new NotImplementedException();
