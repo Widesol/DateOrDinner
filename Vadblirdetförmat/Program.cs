@@ -18,7 +18,8 @@ namespace Vadblirdetförmat
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources(mealList);
-           (string placeChoice, string[] menueArray)= ShowMenues(mealList);
+           (string placeChoice, string[] menueArray, int numberChoice)= ShowMenues(mealList);
+            EnterChoice(placeChoice, menueArray, numberChoice);
             ShowRecepies(mealList);
             EndOfProgram();
 
@@ -164,7 +165,7 @@ namespace Vadblirdetförmat
             EnterChoice(placeChoice, choiceList, numberchoice); 
         }
 
-        private static (string placeChoice, string[] menueArray) ShowMenues(List<Meal> mealList)
+        private static (string placeChoice, string[] menueArray, int numberChoice) ShowMenues(List<Meal> mealList)
         {
             var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
 
@@ -184,7 +185,7 @@ namespace Vadblirdetförmat
             Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
 
             string placeChoice = Console.ReadLine();
-            return (placeChoice, menueArray);
+            return (placeChoice, menueArray, 3);
 
 
 
@@ -259,6 +260,9 @@ namespace Vadblirdetförmat
                     Choices.Last().Servis = (Serv)Enum.Parse(typeof(Serv), splitArray[1]);
                 else if(placeChoice == splitArray[0] && numberChoice == 2)
                     Choices.Last().Proteinsource = (Protein)Enum.Parse(typeof(Protein), splitArray[1]);
+                else if(placeChoice == splitArray[0] && numberChoice == 3)
+                    Choices.Last().Menues = splitArray[1];
+
 
 
             }
