@@ -6,7 +6,7 @@ namespace Vadblirdetförmat
 {
     enum Serv
     {
-        Hemmlagat,
+        Hemlagat,
         Restaurang,
         Vän,
         Föräldrar,

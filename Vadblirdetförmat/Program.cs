@@ -95,7 +95,6 @@ namespace Vadblirdetförmat
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
         {
-            int timeSlot; //OW
             int lastChoice = Choices.Count;
             string dateMonth = Choices[lastChoice - 1].DinnerDate.Month.ToString();
             string dateDay = Choices[lastChoice - 1].DinnerDate.Day.ToString();
@@ -131,7 +130,8 @@ namespace Vadblirdetförmat
         {
             var showPlacesHome = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Hemma.ToString()).Select(x=>x.Servis).Distinct().ToList();
             var showPlacesAway = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Places.Ute.ToString()).Select(x =>x.Servis).Distinct().ToList();
-            PrintChoices(showPlacesHome, showPlacesAway);
+            var enteredChoice = PrintChoices(showPlacesHome, showPlacesAway);
+            EnterChoice(enteredChoice.Item1, enteredChoice.Item2);
         }
 
         private static void FriendOrFamily()
@@ -159,31 +159,25 @@ namespace Vadblirdetförmat
             Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
             Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
             var showPlaces = mealList.Where(x => x.Menu == "Julbord" || x.Menu == "Påskbord" || x.Menu == "Midsommarmiddag").Select(x => x.Place).Distinct().ToList();
-            PrintChoices(showPlaces);
+            var enteredChoice = PrintChoices(showPlaces);
+            EnterChoice(enteredChoice.Item1, enteredChoice.Item2);
         }
 
-        private static string ShowProteinSources(List<Meal> mealList)
+        private static void ShowProteinSources(List<Meal> mealList)
         {
             var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()).Select(x => x.Protein).Distinct().ToList();
-           (string placeChoice, string[] choiceList)=PrintChoices(showProtein);
-            EnterChoice(placeChoice, choiceList);
-            throw new NotImplementedException();
+           (string placeChoice, string[] choiceList) = PrintChoices(showProtein);
+            EnterChoice(placeChoice, choiceList); 
         }
 
-
-
-        private static void ShowCarbSources()
-        {
-            //EnterChoice();
-            throw new NotImplementedException();
-        }
         private static void ShowMenues(List<Meal> mealList)
         {
             
         }
+
         private static void ShowRecepies()
         {
-            throw new NotImplementedException();
+            
         }
 
         private static (string, string[]) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
