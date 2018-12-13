@@ -17,7 +17,7 @@ namespace Vadblirdetförmat
             List<Meal> mealList=ReadTextFile();
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
-            ShowProteinSources();
+            ShowProteinSources(mealList);
             ShowCarbSources();
             ShowMenues();
             ShowRecepies();
@@ -95,6 +95,7 @@ namespace Vadblirdetförmat
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
         {
+            int timeSlot; //OW
             int lastChoice = Choices.Count;
             string dateMonth = Choices[lastChoice - 1].DinnerDate.Month.ToString();
             string dateDay = Choices[lastChoice - 1].DinnerDate.Day.ToString();
@@ -105,32 +106,33 @@ namespace Vadblirdetförmat
             }
             else if(int.Parse(dateDay) >= 25 && int.Parse(dateDay) <= 28)
             {
-                int timeSlot = 1;
+                 timeSlot = 1;
                 ShowPlaces(timeSlot, mealList);
             }
             else if (int.Parse(dateDay) >= 29 && int.Parse(dateDay) <= 31 || int.Parse(dateDay) >= 1 && int.Parse(dateDay) <= 10)
             {
-                int timeSlot = 2;
+                 timeSlot = 2;
                 ShowPlaces(timeSlot, mealList);
             }
             else if (int.Parse(dateDay) >= 11 && int.Parse(dateDay) <= 21)
             {
-                int timeSlot = 3;
+                 timeSlot = 3;
                 ShowPlaces(timeSlot, mealList);
             }
             else
             {
-                int timeSlot = 4;
+                 timeSlot = 4;
                 ShowPlaces(timeSlot, mealList);
             }
+           
         }
 
         private static void ShowPlaces(int timeSlot, List<Meal> mealList)
         {
             var showPlaces = mealList.Where(x => x.Time==timeSlot).Select(x=>x.Place).Distinct().ToList();
 
-            PrintChoices(showPlaces);
-            EnterChoice();
+            (string placeChoice, string[] choiceList)=PrintChoices(showPlaces);
+            EnterChoice(placeChoice, choiceList);
             FriendOrFamily();
         }
 
@@ -161,23 +163,19 @@ namespace Vadblirdetförmat
             //ShowPlaces();
         }
 
-        private static void ShowProteinSources()
+        private static string ShowProteinSources(List<Meal> mealList)
         {
-            EnterChoice();
+            var showProtein = mealList.Where(x => x.Time == timeSlot && x.Place == Choices[0].Place.ToString()).Select(x => x.Protein).Distinct().ToList();
+           (string placeChoice, string[] choiceList)=PrintChoices(showProtein);
+            EnterChoice(placeChoice, choiceList);
             throw new NotImplementedException();
         }
 
-        private static void EnterChoice()
-        {
-            
 
-            
-            throw new NotImplementedException();
-        }
 
         private static void ShowCarbSources()
         {
-            EnterChoice();
+            //EnterChoice();
             throw new NotImplementedException();
         }
         private static void ShowMenues()
@@ -188,7 +186,8 @@ namespace Vadblirdetförmat
         {
             throw new NotImplementedException();
         }
-        private static void PrintChoices(List<string> showPlaces)
+
+        private static (string, string[]) PrintChoices(List<string> showPlaces)
         {
             int counter = 1;
             string[] choiceList = new string[showPlaces.Count]; 
@@ -199,17 +198,26 @@ namespace Vadblirdetförmat
                 Console.WriteLine(choiceList[counter-1]);
                
                 counter++;
+                //gör en array lika lång som listan vi skiskat in och tilldelar alternativen en plats i arrayen
+
             }
             string placeChoice = Console.ReadLine();
+            return (placeChoice, choiceList);
 
+
+        }
+
+        private static void EnterChoice(string placeChoice, string[] choiceList) 
+        {
             foreach (var choice in choiceList)
             {
                 string[] splitArray = choice.Split(" ");
                 if (placeChoice == splitArray[0])
-                    Choices[0].Place = (Places)Enum.Parse(typeof(Places),splitArray[1]);
+                    Choices.Last().Place = (Places)Enum.Parse(typeof(Places), splitArray[1]);
 
             }
         }
+
         private static void EndOfProgram()
         {
             throw new NotImplementedException();
