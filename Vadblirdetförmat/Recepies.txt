@@ -2,32 +2,32 @@
 1|Hemma|Hemlagat|Kött|Hjortfilé|900 g hjortfilé, smör till stekning, 2 tsk Salt, 0.5 tsk nymald svartpeppar| Sätt ugnen på 150º. Putsa köttet och bryn runtom i smör. Salta och peppra under tiden. Lägg över det i en ugnsform eller på plåt. Hit kan förberedas.Stek köttet mitt i ugnen tills innertemperaturen är 58º, då är köttet rosarött. Ta ut och låt det vila under folie 10 minuter innan du skivar upp det.|2|Medium|Sallad
 1|Hemma|Hemlagat|Fisk/Skaldjur|Hummer|En kokt hummer, aioli, bröd|Köp en hummer, dela hummern i två halvor, lägg på tallrik, ät|0|Mild|Inga
 1|Hemma|Hemlagat|Vegetariskt|Tryffelpasta|400g valfri pasta, 2 schalottenlökar, 1 vitlök, 1msk smör, 4dl grädde, 0,5tsk salt, 2krm svartpeppar, 40g tryffel, 75g parmesanost(riven), 100g babyspenat|Skala och finhacka lök och vitlök. Hetta upp smöret i en stekpanna och fräs löken utan att den tar färg. Tillsätt grädde, salt och peppar och låt såsen småsjuda ca 5 min så att grädden kokar ner och får en krämig konsistens. Koka pastan enligt anvisningar på förpackningen. Blanda den kokta pastan med gräddsåsen och tillsätt färsk riven tryffel, färsk riven parmesanost och sköljd spenat. Blanda om väl och smaka av och krydda ev mer med salt, peppar och tryffel.|2|Mild
-1|Hemma|Hämtmat|Kött|Foodora
-1|Hemma|Hämtmat|Fisk|Foodora
-1|Hemma|Hämtmat|Vegetariskt|Foodora
-1|Ute|Restaurang|Kött|Meet
-1|Ute|Restaurang|Fisk|Fiskekrogen
-1|Ute|Restaurang|Vegetariskt|Koka
+1|Hemma|Hämtmat|Kött|Foodora| | | | |
+1|Hemma|Hämtmat|Fisk|Foodora| | | | |
+1|Hemma|Hämtmat|Vegetariskt|Foodora| | | | |
+1|Ute|Restaurang|Kött|Meet| | | | |
+1|Ute|Restaurang|Fisk|Fiskekrogen| | | | | 
+1|Ute|Restaurang|Vegetariskt|Koka| | | | |
 2|Hemma|Hemlagat|Fisk/Skaldjur|Krämig fiskgryta med saffran och chili|400 g fiskfilé, 2 st vitlöksklyftor, 1 st chili, 2 st tomater, 1 st paprika, 0.5 st fänkål, 100 g zucchini, 200 g kokt potatis, 0.5 g saffran, 1 dl vitt vin, 1 dl kycklingbuljong, 2.5 dl vispgrädde, olja, salt.|Skär fisken i cm stora bitar. Finhacka vitlök. Kärna ur och finhacka chilin. Fintärna tomaterna och strimla fint paprika, fänkål och zucchini. Skiva potatisen. Fräs vitlök, chili och saffran i en vid kastrull med olja. Häll på vin och koka upp. Häll i buljong och grädde och låt koka ca 3 minuter. Lägg ner resterande grönsakerna och fisken. Koka i 3 minuter och smaka av med salt.|3|Mild|Kokta grösaker
 2|Hemma|Hemlagat|Vegetariskt|Kikärtsbiffar med morotstsatsiki|400g kikärter, 1dl mjölk, 1 purjolök, 1msk majsstärkelse, 1 kruka färsk persilja, 15g smör, Morotstsatsiki: 2dl turkisk yoghurt, 2 morötter, 1 hackad vitlöksklyfta, 1tsk salt, 1 krm svartpeppar, Tillbehör: 3dl ris, 1 paprika, 1dl majskorn|Koka riset enligt anvisningen på förpackningen. Skölj kikärterna i vatten och låt dem rinna av. Finstrimla purjolöken. Mixa kikärterna och blanda med purjolök, persilja och mjölk till en färs. Smaksätt med salt och peppar. Forma färsen till biffar och stek dem i smör i en stekpanna några min på varje sida. Skala och riv morötterna. Rör ihop med matyoghurt, vitlök, salt och peppar. Skär paprikan i bitar. Servera biffarna med ris, tsatsiki, paprika och majs.|4|Mild|Morot, Paprika
-2|Hemma|Hemlagat|Kött|Lövbiff med krämig pasta penne|400g penne-pasta, 300g lövbiff, 3msk smör, 4dl grädde, 3dl köttbuljong, 0,5dl konjak, 1 kvist färsk timjan, 1 gul lök, salt och svartpeppar|Koka pastan i rikligt med saltat vatten enligt anvisningen på paketet. Häll av vattnet i ett durkslag. Skala och finhacka löken och repa bladen av timjankvisten. Fräs lök och timjan i 1 msk smör. Häll över buljong, konjak och grädde och låt småkoka i 10 minuter. Tärna lövbiffen och stek i 2 msk smör i en stekpanna. Blanda ner såsen i den stekta lövbiffen, smaka av med salt och peppar. Blanda såsen med den nykokta pastan.|3|Mild
-2|Hemma|Hämtmat|Kött|Pizza
-2|Hemma|Hämtmat|Fisk|Sushi
-2|Hemma|Hämtmat|Vegetariskt|Falafel
-2|Ute|Restaurang|Fisk/Skaldjur|Sjöbaren
-2|Ute|Restaurang|Kött|The Barn
-2|Ute|Restaurang|Vegetariskt|Happy M Kitchen
+2|Hemma|Hemlagat|Kött|Lövbiff med krämig pasta penne|400g penne-pasta, 300g lövbiff, 3msk smör, 4dl grädde, 3dl köttbuljong, 0,5dl konjak, 1 kvist färsk timjan, 1 gul lök, salt och svartpeppar|Koka pastan i rikligt med saltat vatten enligt anvisningen på paketet. Häll av vattnet i ett durkslag. Skala och finhacka löken och repa bladen av timjankvisten. Fräs lök och timjan i 1 msk smör. Häll över buljong, konjak och grädde och låt småkoka i 10 minuter. Tärna lövbiffen och stek i 2 msk smör i en stekpanna. Blanda ner såsen i den stekta lövbiffen, smaka av med salt och peppar. Blanda såsen med den nykokta pastan.|3|Mild| 
+2|Hemma|Hämtmat|Kött|Pizza| | | | | 
+2|Hemma|Hämtmat|Fisk|Sushi| | | | | 
+2|Hemma|Hämtmat|Vegetariskt|Falafel| | | | | 
+2|Ute|Restaurang|Fisk/Skaldjur|Sjöbaren| | | | | 
+2|Ute|Restaurang|Kött|The Barn| | | | | | | | |
+2|Ute|Restaurang|Vegetariskt|Happy M Kitchen| | | | | 
 3|Hemma|Hemlagat|Vegetariskt|Quinoa och quornsallad med bönor och nötter|4 portioner vit quinoa, 300 g quornbitar, 1 msk olja, 2 vitlöksklyftor, salt och peppar, 1 kruksallat, 75 g rucola, 10–15 små tomater (i olika färger), 1 gurka, 100 g cannellinibönor, 100 g edamame/sojabönor, 1 gul morot (riven), 1/2 dl hasselnötter, Citrondressing:|1/2 dl olivolja, 2 msk vitvinsvinäger, 2 msk pressad citron, salt och vitpeppar|Koka quinoan efter anvisningarna på paketet. Stek quornbitarna i olja och fint hackad vitlök. Salta och peppra. Riv sallat och skär rucola i mindre bitar. Halvera tomaterna. Skala gurkan och skär i småbitar. Blanda allt. Rör i bönor och riven morot. Strö över hasselnötter. Blanda samtliga ingredienser till dressingen. Häll över salladen innan servering|1|Mild|Sallad
-3|Hemma|Hemlagat|Kött|Korv stroganoff|4 portioner ris, 400g strimlad falukorv, 2 finhackade gula lökar, 2dl matlagningsgrädde, 1dl vatten, 1msk tomatpuré, 1msk kinesisk soja, salt och peppar, 1msk olja till stekning, grovskuren vitkål med persilja till servering| 
-3|Hemma|Hemlagat|Fisk/Skaldjur|Lax i ugn med rotfrukter|500 g laxfilé, 1 kg rotfrukter, salt, nymalen svartpeppar, 1-2 msk olivolja, 2 dl crème fraiche, 1 tsk honung, citron, salt|Sätt ugnen på 200 grader. Skala och skär rotfrukterna i bitar eller klyftor. Lägg dem i en ugnssäker form och strö över salt och peppar. Ringla över olivolja och rosta i mitten av ugnen cirka 15-20 minuter. Pensla laxen med lite olja och krydda med salt och peppar. Lägg den sedan på rotfrukterna och sätt in i ugnen igen cirka 15 minuter. Gör under tiden såsen genom att mixa eller röra ihop alla ingredienser till en slät röra. Ta ut formen och servera laxen och rotfrukterna tillsammans med såsen.|2|Mycket mild
-3|Ute|Vegetariskt|Ikeas restaurang
-3|Ute|Kött|McDonald's
-3|Ute|Kött|Ikeas restaurang
-3|Ute|Fisk/Skaldjur|McDonald's
-3|Ute|Fisk/Skaldjur|Ikeas restaurang
-4|Hemma|Hemlagat|Vegetariskt|Sno valfri vegetarisk matlåda ur jobbkylen
-4|Hemma|Hemlagat|Kött|Sno valfri köttmatlåda ur jobbkylen
-4|Hemma|Hemlagat|Fisk/Skaldjur|Sno valfri fiskmatlåda ur jobbkylen
+3|Hemma|Hemlagat|Kött|Korv stroganoff|4 portioner ris, 400g strimlad falukorv, 2 finhackade gula lökar, 2dl matlagningsgrädde, 1dl vatten, 1msk tomatpuré, 1msk kinesisk soja, salt och peppar, 1msk olja till stekning, grovskuren vitkål med persilja till servering| | | | | 
+3|Hemma|Hemlagat|Fisk/Skaldjur|Lax i ugn med rotfrukter|500 g laxfilé, 1 kg rotfrukter, salt, nymalen svartpeppar, 1-2 msk olivolja, 2 dl crème fraiche, 1 tsk honung, citron, salt|Sätt ugnen på 200 grader. Skala och skär rotfrukterna i bitar eller klyftor. Lägg dem i en ugnssäker form och strö över salt och peppar. Ringla över olivolja och rosta i mitten av ugnen cirka 15-20 minuter. Pensla laxen med lite olja och krydda med salt och peppar. Lägg den sedan på rotfrukterna och sätt in i ugnen igen cirka 15 minuter. Gör under tiden såsen genom att mixa eller röra ihop alla ingredienser till en slät röra. Ta ut formen och servera laxen och rotfrukterna tillsammans med såsen.|2|Mycket mild| | 
+3|Ute|Hemlagat|Vegetariskt|Ikeas restaurang| | | | | | 
+3|Ute|Hemlagat|Kött|McDonald's| | | | | | |
+3|Ute|Hemlagat|Kött|Ikeas restaurang| | | | |
+3|Ute|Hemlagat|Fisk/Skaldjur|McDonald's| | | | |
+3|Ute|Hemlagat|Fisk/Skaldjur|Ikeas restaurang| | | | |
+4|Hemma|Hemlagat|Vegetariskt|Sno valfri vegetarisk matlåda ur jobbkylen| | | | | | |
+4|Hemma|Hemlagat|Kött|Sno valfri köttmatlåda ur jobbkylen| | | | | | |
+4|Hemma|Hemlagat|Fisk/Skaldjur|Sno valfri fiskmatlåda ur jobbkylen| | | | | | 
 4|Hemma|Hemlagat|Vegetariskt|Pasta med ketchup|Valfri pastasort, Salt, Ketchup|Koka pastan enligt anvisning på paketet, servera pastan på en tallrik, häll på valfri mängd ketchup (pastan kan även ätas rå, blir mer tuggmotstånd på så vis)|0|Mycket mild
 4|Hemma|Hemlagat|Kött|Snabbnudlar med biffsmak|1pkt snabbnudlar|Koka upp vatten i en kastrull, lägg i nudlarna, häll sedan i kryddningen (om din el är avstängd kan du förbereda maten dagen innan, lägg nudlarna i blöt så hinner de bli tillräckligt mjuka)|1|Mycket mild
 4|Hemma|Hemlagat|Fisk|Fiskpinnar med kokt potatis|4 djupfrysta fiskpinnar, 3 potatisar|Koka potatisen tills mjuk, stek fiskpinnarna i matfett i stekpanna(om du sålt stekpannan och inte har något matfett kan du lägga fiskpinnarna i brödrosten. Om du även sålt brödrosten kan du pröva att sitta på fiskpinnarna tills ljumna.)|1|Mycket mild
