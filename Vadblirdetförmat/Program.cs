@@ -165,7 +165,15 @@ namespace Vadblirdetförmat
 
         private static void ShowMenues(List<Meal> mealList)
         {
-            var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein == Choices.Last().Proteinsource.ToString()).Select(x => x.Protein).Distinct().ToList();
+            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(showMenues[i]);
+            }
+
+
+
         }
 
         private static void ShowRecepies(List<Meal> mealList)
