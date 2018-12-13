@@ -172,7 +172,7 @@ namespace Vadblirdetförmat
 
         private static void ShowMenues(List<Meal> mealList)
         {
-            
+            var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource()).Select(x => x.Protein).Distinct().ToList();
         }
 
         private static void ShowRecepies()
