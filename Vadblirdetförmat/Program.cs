@@ -18,9 +18,8 @@ namespace Vadblirdetförmat
             EnterFoodDate(); // Användaren matar in datum 
             ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
             ShowProteinSources(mealList);
-            ShowCarbSources();
             ShowMenues(mealList);
-            ShowRecepies();
+            ShowRecepies(mealList);
             EndOfProgram();
 
         }
@@ -134,11 +133,6 @@ namespace Vadblirdetförmat
             EnterChoice(enteredChoice.Item1, enteredChoice.Item2);
         }
 
-        private static void FriendOrFamily()
-        {
-            throw new NotImplementedException();
-        }
-
         private static void GetHolidayDinner(string dateMonth, List<Meal> mealList)
         {
             string holidaydinner = "";
@@ -175,9 +169,16 @@ namespace Vadblirdetförmat
             
         }
 
-        private static void ShowRecepies()
+        private static void ShowRecepies(List<Meal> mealList)
         {
-            
+            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() /*&& x.Menu == Choices.Last().Menu.Tostring()*/).Select(x => new { x.Receipe, x.Instructions }).ToArray();
+
+            Console.WriteLine("Recept: ");
+            Console.WriteLine($"{recepie[0]}");
+            Console.WriteLine();
+            Console.WriteLine("Tilllagning: ");
+            Console.WriteLine($"{recepie[1]}");
+            Console.WriteLine("Smaklig måltid!");
         }
 
         private static (string, string[]) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
