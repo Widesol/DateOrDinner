@@ -164,7 +164,7 @@ namespace Vadblirdetförmat
 
         private static string ShowProteinSources(List<Meal> mealList)
         {
-            var showProtein = mealList.Where(x => x.Time == timeSlot && x.Place == Choices[0].Place.ToString()).Select(x => x.Protein).Distinct().ToList();
+            var showProtein = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()).Select(x => x.Protein).Distinct().ToList();
            (string placeChoice, string[] choiceList)=PrintChoices(showProtein);
             EnterChoice(placeChoice, choiceList);
             throw new NotImplementedException();
@@ -186,7 +186,7 @@ namespace Vadblirdetförmat
             throw new NotImplementedException();
         }
 
-        private static (string, string[]) PrintChoices(List<string> showPlaces)
+        private static (string, string[]) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
         {
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
@@ -205,18 +205,13 @@ namespace Vadblirdetförmat
                 Console.Write(choiceList[counter - 1]);
                 counter++;
             }
+            
             Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
-
-            foreach (var choice in choiceList)
-            {
-                string[] splitArray = choice.Split(" ");
-                if (placeChoice == splitArray[0])
-                    Choices[0].Place = (Places)Enum.Parse(typeof(Places),splitArray[1]);
-
-            }
+            return (placeChoice, choiceList);
         }
-        private static void PrintChoices(List<string> showPlacesHome)
+
+        private static (string, string[]) PrintChoices(List<string> showPlacesHome)
         {
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count];
