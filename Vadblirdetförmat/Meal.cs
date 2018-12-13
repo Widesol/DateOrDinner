@@ -7,6 +7,7 @@ namespace Vadblirdetförmat
     class Meal
     {
         public int Time { get; set; }
+        public string Servis { get; set; }
         public string Place { get; set; }
         public string Protein { get; set; }
         public string Carbohydrates { get; set; }
