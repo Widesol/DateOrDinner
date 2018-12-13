@@ -45,12 +45,12 @@ namespace Vadblirdetförmat
                         Servis = listOfMealEvent[1],
                         Place = listOfMealEvent[2],
                         Protein = listOfMealEvent[3],
-                        Menu = listOfMealEvent[5],
-                        Receipe = listOfMealEvent[6],
-                        Instructions = listOfMealEvent[7],
-                        Difficulty = int.Parse(listOfMealEvent[8]),
-                        Flavoring = listOfMealEvent[9],
-                        Vegetables = listOfMealEvent[10],
+                        Menu = listOfMealEvent[4],
+                        Receipe = listOfMealEvent[5],
+                        Instructions = listOfMealEvent[6],
+                        Difficulty = int.Parse(listOfMealEvent[7]),
+                        Flavoring = listOfMealEvent[8],
+                        Vegetables = listOfMealEvent[9],
                     };
                     mealList.Add(s);
                 }
