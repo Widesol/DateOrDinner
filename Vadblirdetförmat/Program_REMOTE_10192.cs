@@ -26,7 +26,7 @@ namespace Vadblirdetförmat
                     EnterChoice(placeChoice, menueArray, numberChoice);
                     ShowRecepies(mealList);
                     bool oneMoreTime = EndOfProgram();
-                    if (oneMoreTime == false)
+                    if (oneMoreTime == true)
                         break;
                 }
                 catch
@@ -43,9 +43,7 @@ namespace Vadblirdetförmat
       
         private static void StartApp()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Är du hungrig? Välkommen, här hittar du recept som passar dig!");
-            Console.ResetColor();
         }
 
         private static List <Meal>  ReadTextFile()
@@ -80,9 +78,7 @@ namespace Vadblirdetförmat
 
         private static void EnterFoodDate()
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write("Vänligen skriv in dagens datum (ÅÅ-MM-DD): ");
-            Console.ResetColor();
+            Console.WriteLine("Vänligen skriv in dagens datum (ÅÅ-MM-DD): ");
 
             string x = Console.ReadLine();
 
@@ -104,9 +100,7 @@ namespace Vadblirdetförmat
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Datumet är i fel format, skriv in igen: ");
-                    Console.ResetColor();
+                    Console.WriteLine("Datumet är i fel format, skriv in igen: ");
                     x = Console.ReadLine();
                     continue;
                 }
@@ -172,9 +166,7 @@ namespace Vadblirdetförmat
                     break;
             }
 
-            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
-            Console.ResetColor();
             Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
             var showPlaces = mealList.Where(x => x.Menu == "Julbord" || x.Menu == "Påskbord" || x.Menu == "Midsommarmiddag").Select(x => x.Place).Distinct().ToList();
             var enteredChoice = PrintChoices(showPlaces);
@@ -190,7 +182,7 @@ namespace Vadblirdetförmat
 
         private static (string placeChoice, string[] menueArray, int numberChoice) ShowMenues(List<Meal> mealList)
         {
-            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && /*x.Place == Choices.Last().Place.ToString()&&*/ x.Servis == Choices.Last().Servis.ToString() && x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
+            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
 
             int countMenues = showMenues.Count;
            
@@ -205,35 +197,26 @@ namespace Vadblirdetförmat
                 Console.WriteLine(menueArray[countMenues]);
 
 
-            Console.WriteLine("Välj ett av dessa förslag framtagna just för dig!");
+            Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
 
 
             string placeChoice = Console.ReadLine();
             return (placeChoice, menueArray, 3);
 
 
+
+
         }
 
         private static void ShowRecepies(List<Meal> mealList)
         {
-            
-            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
-            if(recepie.Count != 0)
-            {
-                Console.WriteLine("Recept: ");
-                Console.WriteLine($"{recepie[0].Receipe}");
-                Console.WriteLine();
-                Console.WriteLine("Tilllagning: ");
-                Console.WriteLine($"{recepie[0].Instructions}");
-                Console.WriteLine("Smaklig måltid!");
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Restaurangen ligger runt hörnet. Menyn finns vid dörren.");
-                Console.WriteLine("Smaklig MÅLTID!!");
-                Console.ForegroundColor = ConsoleColor.Green;
-            }
+           var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
+            Console.WriteLine("Recept: ");
+            Console.WriteLine($"{recepie[0].Recepie}");
+            Console.WriteLine();
+            Console.WriteLine("Tilllagning: ");
+            Console.WriteLine($"{recepie[0].Instructions}");
+            Console.WriteLine("Smaklig måltid!");
         }
 
         private static (string, string[], int) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
@@ -241,9 +224,7 @@ namespace Vadblirdetförmat
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Vill du kanske äta hemma idag? I så fall kan du välja mellan följande: ");
-            Console.ResetColor();
+            Console.WriteLine("Vill du kanske äta hemma idag?");
             foreach (var place in showPlacesHome)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
@@ -251,9 +232,7 @@ namespace Vadblirdetförmat
                 counter++;
             }
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Eller vill du lyxa till det och äta ute?");
-            Console.ResetColor();
             foreach (var place in showPlacesAway)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
@@ -261,10 +240,8 @@ namespace Vadblirdetförmat
                 counter++;
             }
             Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Skriv in ditt val av ovan alternativ och gör sedan ditt val från listan nedan: ");
-            Console.ResetColor();
+            
+            Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 1);
         }
@@ -283,12 +260,12 @@ namespace Vadblirdetförmat
 
             }
 
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Skriv in ditt val av ovan alternativ och gör sedan ditt val från listan nedan: ");
-            Console.ResetColor();
+            
+            Console.Write("Välj från listan nedan: ");
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 2);
+
+
         }
 
         private static void EnterChoice(string placeChoice, string[] choiceList, int numberChoice) 
@@ -302,6 +279,8 @@ namespace Vadblirdetförmat
                     Choices.Last().Proteinsource = (Protein)Enum.Parse(typeof(Protein), splitArray[1]);
                 else if(placeChoice == splitArray[0] && numberChoice == 3)
                     Choices.Last().Menues = splitArray[1];
+
+
 
             }
         }
