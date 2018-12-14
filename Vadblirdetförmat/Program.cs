@@ -13,15 +13,31 @@ namespace Vadblirdetförmat
 
         static void Main(string[] args)
         {
-            StartApp(); //Välkomsthälsning
-            List<Meal> mealList=ReadTextFile();
-            EnterFoodDate(); // Användaren matar in datum 
-            ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
-            ShowProteinSources(mealList);
-           (string placeChoice, string[] menueArray, int numberChoice)= ShowMenues(mealList);
-            EnterChoice(placeChoice, menueArray, numberChoice);
-            ShowRecepies(mealList);
-            EndOfProgram();
+            while (true)
+            {
+                try
+                {
+                    StartApp(); //Välkomsthälsning
+                    List<Meal> mealList=ReadTextFile();
+                    EnterFoodDate(); // Användaren matar in datum 
+                    ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
+                    ShowProteinSources(mealList);
+                    (string placeChoice, string[] menueArray, int numberChoice)= ShowMenues(mealList);
+                    EnterChoice(placeChoice, menueArray, numberChoice);
+                    ShowRecepies(mealList);
+                    bool oneMoreTime = EndOfProgram();
+                    if (oneMoreTime == true)
+                        break;
+                }
+                catch
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Oooops... Ring POOLIA!! Nej nej nej AW menar jag. Tyvärr du måste börja om.");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+
+            }
 
         }
       
@@ -269,9 +285,17 @@ namespace Vadblirdetförmat
             }
         }
 
-        private static void EndOfProgram()
+        private static bool EndOfProgram()
         {
-            
+            Console.WriteLine("Vill du välja mat för en dag till? Ja, eller Nej: ");
+            string oneMoreDinner = Console.ReadLine();
+            bool answerOneMoreDinner;
+            if (oneMoreDinner.ToUpper() == "JA")
+                answerOneMoreDinner = true;
+            else
+                answerOneMoreDinner = false;
+            return answerOneMoreDinner;
+                
         }
 
     }
