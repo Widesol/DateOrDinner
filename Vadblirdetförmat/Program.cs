@@ -283,12 +283,12 @@ namespace Vadblirdetförmat
 
             }
 
-            
-            Console.Write("Välj från listan nedan: ");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Skriv in ditt val av ovan alternativ och gör sedan ditt val från listan nedan: ");
+            Console.ResetColor();
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 2);
-
-
         }
 
         private static void EnterChoice(string placeChoice, string[] choiceList, int numberChoice) 
@@ -311,8 +311,6 @@ namespace Vadblirdetförmat
                     Choices.Last().Menues = name.Trim();
 
                 }
-
-
 
             }
         }
