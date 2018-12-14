@@ -62,35 +62,67 @@ namespace Vadblirdetförmat
 
         private static void EnterFoodDate()
         {
-            Console.WriteLine("Vänligen skriv in dagens datum (ÅÅ-MM-DD): ");
-
-            string x = Console.ReadLine();
-
-            DateTime validatedDate = ValidateNumber(x);
-            Choices.Add(new Choice() { DinnerDate = validatedDate });
-
-        }
-
-        private static DateTime ValidateNumber(string x)
-        {
-            while (true)
+            bool check=true;
+            string x;
+                Console.WriteLine("Vänligen skriv in dagens datum (ÅÅ-MM-DD): ");
+            do
             {
-                Match match = Regex.Match(x, @"^[0-9]\d[-][0-9]\d[-][0-9]\d$");
 
-                if (match.Success)
-                {
-                    DateTime date = DateTime.Parse(x);
-                    return date;
-                }
-                else
-                {
+                x = Console.ReadLine();
+                string[] date = x.Split('-');
+                int year = int.Parse(date[0]);
+                int month = int.Parse(date[1]);
+                int day = int.Parse(date[2]);
+
+                //DateTime validatedDate = ValidateNumber(x);
+                //Choices.Add(new Choice() { DinnerDate = validatedDate });
+
+                check = checkIfValid(year, month, day);
+                if(check == true)
                     Console.WriteLine("Datumet är i fel format, skriv in igen: ");
-                    x = Console.ReadLine();
-                    continue;
-                }
-            }
+            } while (check == true);
+
+            DateTime dateX = DateTime.Parse(x);
+            Choices.Add(new Choice() { DinnerDate = dateX });
+
+
+
 
         }
+
+
+        private static bool checkIfValid(int year, int month, int day)
+                {
+
+                    bool check = true;
+                    if (year <= DateTime.MaxValue.Year && year >= DateTime.MinValue.Year&& month <= DateTime.MaxValue.Month && month >= DateTime.MinValue.Month && day <= DateTime.MaxValue.Day && day >= DateTime.MinValue.Day)
+                    {
+                                check = false;
+                    }
+
+                    return check;
+        //private static DateTime ValidateNumber(string x)
+        //{
+            //while (true)
+            //{
+                //Match match = Regex.Match(x, @"^[0-9]\d[-][0-9]\d[-][0-9]\d$");
+
+
+                  
+                //if (match.Success)
+                //{
+                //    DateTime date = DateTime.Parse(x);
+                //    return date;
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Datumet är i fel format, skriv in igen: ");
+                //    x = Console.ReadLine();
+                //    continue;
+                }
+            //}
+
+        //}
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
         {
