@@ -26,7 +26,7 @@ namespace Vadblirdetförmat
                     EnterChoice(placeChoice, menueArray, numberChoice);
                     ShowRecepies(mealList);
                     bool oneMoreTime = EndOfProgram();
-                    if (oneMoreTime == false)
+                    if (oneMoreTime == true)
                         break;
                 }
                 catch
@@ -63,7 +63,7 @@ namespace Vadblirdetförmat
                         Place = listOfMealEvent[1],
                         Protein = listOfMealEvent[3],
                         Menu = listOfMealEvent[4],
-                        Recepie = listOfMealEvent[5],
+                        Receipe = listOfMealEvent[5],
                         Instructions = listOfMealEvent[6],
                         Difficulty = listOfMealEvent[7],
                         Flavoring = listOfMealEvent[8],
@@ -105,6 +105,7 @@ namespace Vadblirdetförmat
                     continue;
                 }
             }
+
         }
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
@@ -182,7 +183,7 @@ namespace Vadblirdetförmat
 
         private static (string placeChoice, string[] menueArray, int numberChoice) ShowMenues(List<Meal> mealList)
         {
-            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && /*x.Place == Choices.Last().Place.ToString()&&*/ x.Servis == Choices.Last().Servis.ToString() && x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
+            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
 
             int countMenues = showMenues.Count;
            
@@ -210,47 +211,34 @@ namespace Vadblirdetförmat
 
         private static void ShowRecepies(List<Meal> mealList)
         {
-            
-            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
-            if(recepie.Count != 0)
-            {
-                Console.WriteLine("Recept: ");
-                Console.WriteLine($"{recepie[0].Receipe}");
-                Console.WriteLine();
-                Console.WriteLine("Tilllagning: ");
-                Console.WriteLine($"{recepie[0].Instructions}");
-                Console.WriteLine("Smaklig måltid!");
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Restaurangen ligger runt hörnet. Menyn finns vid dörren.");
-                Console.WriteLine("Smaklig MÅLTID!!");
-                Console.ForegroundColor = ConsoleColor.Green;
-            }
+           var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
+            Console.WriteLine("Recept: ");
+            Console.WriteLine($"{recepie[0].Receipe}");
+            Console.WriteLine();
+            Console.WriteLine("Tilllagning: ");
+            Console.WriteLine($"{recepie[0].Instructions}");
+            Console.WriteLine("Smaklig måltid!");
         }
 
         private static (string, string[], int) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
         {
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
-            Console.WriteLine();
-            Console.WriteLine("Vill du kanske äta hemma idag?");
+            Console.WriteLine("Hemma");
             foreach (var place in showPlacesHome)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-            Console.WriteLine();
-            Console.WriteLine("Eller vill du lyxa till det och äta ute?");
+
+            Console.WriteLine("Ute");
             foreach (var place in showPlacesAway)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-            Console.WriteLine();
             
             Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
@@ -272,7 +260,7 @@ namespace Vadblirdetförmat
             }
 
             
-            Console.Write("Välj från listan nedan: ");
+            Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 2);
 

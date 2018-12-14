@@ -210,6 +210,7 @@ namespace Vadblirdetförmat
 
         private static void ShowRecepies(List<Meal> mealList)
         {
+<<<<<<< HEAD
             
             var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
             if(recepie.Count != 0)
@@ -228,6 +229,15 @@ namespace Vadblirdetförmat
                 Console.WriteLine("Smaklig MÅLTID!!");
                 Console.ForegroundColor = ConsoleColor.Green;
             }
+=======
+           var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
+            Console.WriteLine("Recept: ");
+            Console.WriteLine($"{recepie[0].Recepie}");
+            Console.WriteLine();
+            Console.WriteLine("Tilllagning: ");
+            Console.WriteLine($"{recepie[0].Instructions}");
+            Console.WriteLine("Smaklig måltid!");
+>>>>>>> a976b2e5f5e4c40366f1c41642eee10eeac5fd20
         }
 
         private static (string, string[], int) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)

@@ -63,7 +63,7 @@ namespace Vadblirdetförmat
                         Place = listOfMealEvent[1],
                         Protein = listOfMealEvent[3],
                         Menu = listOfMealEvent[4],
-                        Recepie = listOfMealEvent[5],
+                        Receipe = listOfMealEvent[5],
                         Instructions = listOfMealEvent[6],
                         Difficulty = listOfMealEvent[7],
                         Flavoring = listOfMealEvent[8],
@@ -105,6 +105,7 @@ namespace Vadblirdetförmat
                     continue;
                 }
             }
+
         }
 
         private static void ShowDinnerPlaces(List<Meal>mealList)
@@ -234,23 +235,21 @@ namespace Vadblirdetförmat
         {
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
-            Console.WriteLine();
-            Console.WriteLine("Vill du kanske äta hemma idag?");
+            Console.WriteLine("Hemma");
             foreach (var place in showPlacesHome)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-            Console.WriteLine();
-            Console.WriteLine("Eller vill du lyxa till det och äta ute?");
+
+            Console.WriteLine("Ute");
             foreach (var place in showPlacesAway)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-            Console.WriteLine();
             
             Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
@@ -272,7 +271,7 @@ namespace Vadblirdetförmat
             }
 
             
-            Console.Write("Välj från listan nedan: ");
+            Console.Write("Gör ditt val från listorna: ");
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 2);
 

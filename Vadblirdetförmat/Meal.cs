@@ -12,7 +12,7 @@ namespace Vadblirdetförmat
         public string Protein { get; set; }
         public string Carbohydrates { get; set; }
         public string Menu { get; set; }
-        public string Receipe { get; set; }
+        public string Recepie { get; set; }
         public string Instructions { get; set; }
         public string Difficulty { get; set; }
         public string Flavoring { get; set; }
