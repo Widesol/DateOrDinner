@@ -13,21 +13,39 @@ namespace Vadblirdetförmat
 
         static void Main(string[] args)
         {
-            StartApp(); //Välkomsthälsning
-            List<Meal> mealList=ReadTextFile();
-            EnterFoodDate(); // Användaren matar in datum 
-            ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
-            ShowProteinSources(mealList);
-           (string placeChoice, string[] menueArray, int numberChoice)= ShowMenues(mealList);
-            EnterChoice(placeChoice, menueArray, numberChoice);
-            ShowRecepies(mealList);
-            EndOfProgram();
+            while (true)
+            {
+                try
+                {
+                    StartApp(); //Välkomsthälsning
+                    List<Meal> mealList=ReadTextFile();
+                    EnterFoodDate(); // Användaren matar in datum 
+                    ShowDinnerPlaces(mealList); // Användaren får alternativ på var maten
+                    ShowProteinSources(mealList);
+                    (string placeChoice, string[] menueArray, int numberChoice)= ShowMenues(mealList);
+                    EnterChoice(placeChoice, menueArray, numberChoice);
+                    ShowRecepies(mealList);
+                    bool oneMoreTime = EndOfProgram();
+                    if (oneMoreTime == false)
+                        break;
+                }
+                catch
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Oooops... Ring POOLIA!! Nej nej nej AW menar jag. Tyvärr du måste börja om.");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+
+            }
 
         }
       
         private static void StartApp()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Är du hungrig? Välkommen, här hittar du recept som passar dig!");
+            Console.ResetColor();
         }
 
         private static List <Meal>  ReadTextFile()
@@ -47,7 +65,7 @@ namespace Vadblirdetförmat
                         Place = listOfMealEvent[1],
                         Protein = listOfMealEvent[3],
                         Menu = listOfMealEvent[4],
-                        Receipe = listOfMealEvent[5],
+                        Recepie = listOfMealEvent[5],
                         Instructions = listOfMealEvent[6],
                         Difficulty = listOfMealEvent[7],
                         Flavoring = listOfMealEvent[8],
@@ -183,7 +201,9 @@ namespace Vadblirdetförmat
                     break;
             }
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Fantastiskt! det är {holidaydinner} som serveras!");
+            Console.ResetColor();
             Console.WriteLine("Välj var du vill inta din middag. Välj i listan:");
             var showPlaces = mealList.Where(x => x.Menu == "Julbord" || x.Menu == "Påskbord" || x.Menu == "Midsommarmiddag").Select(x => x.Place).Distinct().ToList();
             var enteredChoice = PrintChoices(showPlaces);
@@ -199,7 +219,7 @@ namespace Vadblirdetförmat
 
         private static (string placeChoice, string[] menueArray, int numberChoice) ShowMenues(List<Meal> mealList)
         {
-            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
+            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Servis == Choices.Last().Servis.ToString() && x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
 
             int countMenues = showMenues.Count;
            
@@ -210,53 +230,70 @@ namespace Vadblirdetförmat
                 Console.WriteLine(menueArray[i]);
 
             }
-            menueArray[countMenues] = $"{countMenues} Nytt menyförslag";
+            menueArray[countMenues] = $"{countMenues + 1} Nytt menyförslag";
                 Console.WriteLine(menueArray[countMenues]);
 
 
-            Console.WriteLine("Välj ett av de förslag framtagna just för dig och din aktuella livssituation");
+            Console.WriteLine("Välj ett av dessa förslag framtagna just för dig!");
 
 
             string placeChoice = Console.ReadLine();
             return (placeChoice, menueArray, 3);
 
 
-
-
         }
 
         private static void ShowRecepies(List<Meal> mealList)
         {
-           var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
-            Console.WriteLine("Recept: ");
-            Console.WriteLine($"{recepie[0].Receipe}");
-            Console.WriteLine();
-            Console.WriteLine("Tilllagning: ");
-            Console.WriteLine($"{recepie[0].Instructions}");
-            Console.WriteLine("Smaklig måltid!");
+            
+            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
+            if(recepie.Count != 0)
+            {
+                Console.WriteLine("Recept: ");
+                Console.WriteLine($"{recepie[0].Recepie}");
+                Console.WriteLine();
+                Console.WriteLine("Tilllagning: ");
+                Console.WriteLine($"{recepie[0].Instructions}");
+                Console.WriteLine("Smaklig måltid!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Restaurangen ligger runt hörnet. Menyn finns vid dörren.");
+                Console.WriteLine("Smaklig MÅLTID!!");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
         }
 
         private static (string, string[], int) PrintChoices(List<string> showPlacesHome, List<string> showPlacesAway)
         {
             int counter = 1;
             string[] choiceList = new string[showPlacesHome.Count + showPlacesAway.Count];
-            Console.WriteLine("Hemma");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Vill du kanske äta hemma idag? I så fall kan du välja mellan följande: ");
+            Console.ResetColor();
             foreach (var place in showPlacesHome)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-
-            Console.WriteLine("Ute");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Eller vill du lyxa till det och äta ute?");
+            Console.ResetColor();
             foreach (var place in showPlacesAway)
             {
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
             }
-            
-            Console.Write("Gör ditt val från listorna: ");
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Skriv in ditt val av ovan alternativ och gör sedan ditt val från listan nedan: ");
+            Console.ResetColor();
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 1);
         }
@@ -271,16 +308,16 @@ namespace Vadblirdetförmat
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
-                //gör en array lika lång som listan vi skiskat in och tilldelar alternativen en plats i arrayen
+                //gör en array lika lång som listan vi skickat in och tilldelar alternativen en plats i arrayen
 
             }
 
-            
-            Console.Write("Gör ditt val från listorna: ");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Skriv in ditt val av ovan alternativ och gör sedan ditt val från listan nedan: ");
+            Console.ResetColor();
             string placeChoice = Console.ReadLine();
             return (placeChoice, choiceList, 2);
-
-
         }
 
         private static void EnterChoice(string placeChoice, string[] choiceList, int numberChoice) 
@@ -290,19 +327,34 @@ namespace Vadblirdetförmat
                 string[] splitArray = choice.Split(" ");
                 if (placeChoice == splitArray[0] && numberChoice == 1)
                     Choices.Last().Servis = (Serv)Enum.Parse(typeof(Serv), splitArray[1]);
-                else if(placeChoice == splitArray[0] && numberChoice == 2)
+                else if (placeChoice == splitArray[0] && numberChoice == 2)
                     Choices.Last().Proteinsource = (Protein)Enum.Parse(typeof(Protein), splitArray[1]);
-                else if(placeChoice == splitArray[0] && numberChoice == 3)
-                    Choices.Last().Menues = splitArray[1];
+                else if (placeChoice == splitArray[0] && numberChoice == 3)
+                {
+                    string name = "";
 
+                    for (int i = 1; i < splitArray.Length; i++)
+                    {
+                        name = splitArray[i]+" ";
+                    }
+                    Choices.Last().Menues = name.Trim();
 
+                }
 
             }
         }
 
-        private static void EndOfProgram()
+        private static bool EndOfProgram()
         {
-            
+            Console.WriteLine("Vill du välja mat för en dag till? Ja, eller Nej: ");
+            string oneMoreDinner = Console.ReadLine();
+            bool answerOneMoreDinner;
+            if (oneMoreDinner.ToUpper() == "JA")
+                answerOneMoreDinner = true;
+            else
+                answerOneMoreDinner = false;
+            return answerOneMoreDinner;
+                
         }
 
     }
