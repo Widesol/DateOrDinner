@@ -239,7 +239,7 @@ namespace Vadblirdetförmat
                 choiceList[counter - 1] = $"{counter} {place}";
                 Console.WriteLine(choiceList[counter - 1]);
                 counter++;
-                //gör en array lika lång som listan vi skiskat in och tilldelar alternativen en plats i arrayen
+                //gör en array lika lång som listan vi skickat in och tilldelar alternativen en plats i arrayen
 
             }
 
