@@ -190,7 +190,7 @@ namespace Vadblirdetförmat
 
         private static (string placeChoice, string[] menueArray, int numberChoice) ShowMenues(List<Meal> mealList)
         {
-            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && /*x.Place == Choices.Last().Place.ToString()&&*/ x.Servis == Choices.Last().Servis.ToString() && x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
+            var showMenues = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString()&& x.Servis == Choices.Last().Servis.ToString() && x.Protein==Choices.Last().Proteinsource.ToString()).Select(x => x.Menu).Distinct().ToList();
 
             int countMenues = showMenues.Count;
            
@@ -201,7 +201,7 @@ namespace Vadblirdetförmat
                 Console.WriteLine(menueArray[i]);
 
             }
-            menueArray[countMenues] = $"{countMenues} Nytt menyförslag";
+            menueArray[countMenues] = $"{countMenues + 1} Nytt menyförslag";
                 Console.WriteLine(menueArray[countMenues]);
 
 
@@ -217,11 +217,11 @@ namespace Vadblirdetförmat
         private static void ShowRecepies(List<Meal> mealList)
         {
             
-            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Place == Choices.Last().Place.ToString() && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
+            var recepie = mealList.Where(x => x.Time == Choices.Last().TimeSlot && x.Servis == Choices.Last().Servis.ToString() && x.Protein == Choices.Last().Proteinsource.ToString() && x.Menu == Choices.Last().Menues).Select(x => x).ToList();
             if(recepie.Count != 0)
             {
                 Console.WriteLine("Recept: ");
-                Console.WriteLine($"{recepie[0].Receipe}");
+                Console.WriteLine($"{recepie[0].Recepie}");
                 Console.WriteLine();
                 Console.WriteLine("Tilllagning: ");
                 Console.WriteLine($"{recepie[0].Instructions}");
@@ -298,10 +298,19 @@ namespace Vadblirdetförmat
                 string[] splitArray = choice.Split(" ");
                 if (placeChoice == splitArray[0] && numberChoice == 1)
                     Choices.Last().Servis = (Serv)Enum.Parse(typeof(Serv), splitArray[1]);
-                else if(placeChoice == splitArray[0] && numberChoice == 2)
+                else if (placeChoice == splitArray[0] && numberChoice == 2)
                     Choices.Last().Proteinsource = (Protein)Enum.Parse(typeof(Protein), splitArray[1]);
-                else if(placeChoice == splitArray[0] && numberChoice == 3)
-                    Choices.Last().Menues = splitArray[1];
+                else if (placeChoice == splitArray[0] && numberChoice == 3)
+                {
+                    string name = "";
+
+                    for (int i = 1; i < splitArray.Length; i++)
+                    {
+                        name = splitArray[i]+" ";
+                    }
+                    Choices.Last().Menues = name.Trim();
+
+                }
 
 
 
